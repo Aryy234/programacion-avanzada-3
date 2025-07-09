@@ -1,0 +1,10 @@
+carta
+perro
+coche
+grano
+llave
+mundo
+sol
+casa
+estrella
+ventana
