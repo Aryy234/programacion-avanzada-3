@@ -52,16 +52,22 @@ public class Main {
         int resPot3 = Mathe.raizCuadrada.apply(n);
         System.out.println("La raiz de " + n + " es: " + resPot3);
 
-        //Aplicar fold para filtrar numeros de una lista a solo lista de primos
+        //Aplicar fold y reduce para realizar distintas operacienes
         Lista<Integer> listaNum2 = Lista.of(1,2,3,4,5,6,7,8,9,10);
+
         Lista<Integer> listaPrimos = Mathe.getNumPrimos.apply(listaNum2);
         Lista<Integer> listaFact = Mathe.factLista.apply(listaNum2);
+        int resultProducList = Mathe.producLista.apply(listaNum2);
+        Lista<Integer> listFibonacci = Mathe.listFibonacci.apply(4);
 
         System.out.println("Aplicando Fold a listas");
         System.out.println("Lista inicial: " + listaNum2.toStringRepresentation());
 
         System.out.println("Lista de primos: " + listaPrimos.toStringRepresentation());
         System.out.println("Lista de factoriales: " + listaFact.toStringRepresentation());
+        System.out.println("Product de numeros de una lista: " + resultProducList);
+        System.out.println("Lista de los " + num + " primeros numeros de Fibonacci: " + listFibonacci.toStringRepresentation());
+
 
 
 

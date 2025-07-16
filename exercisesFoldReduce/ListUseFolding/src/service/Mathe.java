@@ -27,6 +27,8 @@ public class Mathe {
     public static Funcion<Integer, Integer> raizCuadrada;
     public static Funcion<Integer, Boolean> esPrimo;
     public static Funcion<Lista<Integer>, Lista<Integer>> factLista;
+    public static Funcion<Lista<Integer>, Integer> producLista;
+    public static Funcion<Integer, Lista<Integer>> listFibonacci;
 
     static {
         factorial = n -> n == 0 ? 1 : n * factorial.apply(n - 1);
@@ -115,6 +117,19 @@ Problema: Dada una lista de enteros, utiliza una función para filtrar y obtener
           return lista.fold(Lista.<Integer>empty(), accu -> elem -> accu.append(factorial.apply(elem)));
         };
 
+    }
+
+    static {
+        producLista = lista -> {
+            return lista.reduce(1, a-> b-> a*b);
+        };
+    }
+
+    static{
+        listFibonacci = n -> {
+            return n == 0 ? Lista.empty() :
+                    listFibonacci.apply(n-1).append(fibonacci.apply(n-1));
+        };
     }
 
 }
