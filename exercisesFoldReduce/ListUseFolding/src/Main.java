@@ -37,6 +37,36 @@ public class Main {
         int resGf = gf.apply(x);
         System.out.println("f(g(" + x + ")) = " + resFg);
         System.out.println("g(f(" + x + ")) = " + resGf);
-        
+
+        //Aplicar potencia creada en class Mathe
+        int n = 4;
+        int m = 3;
+        int resPot1 = Mathe.potencia.apply(2).apply(3);
+        System.out.println("El resultado de: " + n +"^"+ m + " es: " + resPot1);
+
+        //Aplicar potencia creada en class Mathe
+        int resPot2 = Mathe.sumCuadradoNaturales.apply(n);
+        System.out.println("El resultado de los " + n + " numeros en secuencia al cuadrado es: " + resPot2);
+
+        //Aplicar raizCuadrada creada en class Mathe
+        int resPot3 = Mathe.raizCuadrada.apply(n);
+        System.out.println("La raiz de " + n + " es: " + resPot3);
+
+        //Aplicar fold para filtrar numeros de una lista a solo lista de primos
+        Lista<Integer> listaNum2 = Lista.of(1,2,3,4,5,6,7,8,9,10);
+        Lista<Integer> listaPrimos = Mathe.getNumPrimos.apply(listaNum2);
+        Lista<Integer> listaFact = Mathe.factLista.apply(listaNum2);
+
+        System.out.println("Aplicando Fold a listas");
+        System.out.println("Lista inicial: " + listaNum2.toStringRepresentation());
+
+        System.out.println("Lista de primos: " + listaPrimos.toStringRepresentation());
+        System.out.println("Lista de factoriales: " + listaFact.toStringRepresentation());
+
+
+
+
+
+
     }
 }

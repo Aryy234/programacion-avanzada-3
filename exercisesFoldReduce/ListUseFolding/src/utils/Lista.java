@@ -141,6 +141,21 @@ public sealed interface Lista <T> permits Empty, Const{
                 ls -> t -> ls.count() < n ? ls.append(t) : ls);
     }
 
+    default String toStringRepresentation() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        var tmp = this;
+        while (!tmp.isEmpty()) {
+            sb.append(tmp.head());
+            tmp = tmp.tail();
+            if (!tmp.isEmpty()) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     default int countFold() {
         return this.<Integer>fold(0, acc -> elem -> acc + 1);
     }
