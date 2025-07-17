@@ -68,6 +68,7 @@ public class Main {
         System.out.println("Product de numeros de una lista: " + resultProducList);
         System.out.println("Lista de los " + num + " primeros numeros de Fibonacci: " + listFibonacci.toStringRepresentation());
 
+        //Posible de prueba: pasar de algo imperativo a funcional
 
 
 
