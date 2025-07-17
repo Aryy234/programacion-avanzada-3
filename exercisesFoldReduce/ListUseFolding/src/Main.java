@@ -1,6 +1,8 @@
+import utils.Effect;
+import utils.Executable;
 import utils.Funcion;
 import utils.Lista;
-
+//Posible de prueba: pasar de algo imperativo a funcional OJOOO
 import service.Mathe;
 
 public class Main {
@@ -68,12 +70,45 @@ public class Main {
         System.out.println("Product de numeros de una lista: " + resultProducList);
         System.out.println("Lista de los " + num + " primeros numeros de Fibonacci: " + listFibonacci.toStringRepresentation());
 
-        //Posible de prueba: pasar de algo imperativo a funcional
+        //Funcion para imprimir utilizando executable
 
+        //implementar printInteger OJO no es funcion pura solucionar
+        Effect<Integer> printInteger = xExec->{
+            System.out.printf("d%", x);
+            System.out.println();
+        };
 
+        Funcion<Executable, Funcion<Integer, Executable>>
+                fn = ex -> elem -> () ->{
+            ex.exec();
+            printInteger.apply(elem);
+        };
 
+        Funcion<Executable, Funcion<Integer, Executable>>
+                fn1 = ex -> elem ->{
+            ex.exec();
+            return () -> {
+              printInteger.apply(elem);
+            };
+        };
 
+        //Implementacion de execute teniendo en cuenta efectos secundarios
+        Executable exec0 = () ->{};
+        Executable exec1 = ()-> {
+          exec0.exec();
+            System.out.println(1);
+        };
+        Executable exec2 = ()-> {
+            exec1.exec();
+            System.out.println(2);
+        };
+        Executable exec3 = ()-> {
+            exec2.exec();
+            System.out.println(3);
+        };
 
+        //para imprimir exec
+        exec3.exec();
 
     }
 }
