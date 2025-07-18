@@ -1,5 +1,7 @@
 package service;
 
+import util.Effect;
+import util.Executable;
 import util.Resultado;
 
 import java.util.function.Function;
@@ -23,13 +25,13 @@ public class EnviarMail {
                 }
             };
 
-    private void enviarCorrero(String email) {
+/*    private void enviarCorrero(String email) {
         System.out.println(" Correo de verificación enviado a: " + email);
     }
     private void deslegarMensajeError(String txt) {
         System.out.printf("ERROR:  %s\n", txt);
-    }
-    public void testMail(String email) {
+    }*/
+/*    public void testMail(String email) {
         Resultado resul =  emailChecker.apply(email);
         if(resul instanceof Resultado.Exito) {
             enviarCorrero(email);
@@ -38,7 +40,17 @@ public class EnviarMail {
             //deslegarMensajeError(String.format("email %s inválido", email));
             deslegarMensajeError(error.getMns());
         }
-    }
+    }*/
+
+    Effect<String> succes = mns -> System.out.println(" Correo de verificación enviado a: " + mns);
+    Effect<String> failure = mns -> System.out.printf("ERROR:  %s\n", mns);
+
+    public Executable validar(String email){
+        Resultado resul = emailChecker.apply(email);
+      return resul instanceof Resultado.Exito ?
+              () -> succes.apply(email):
+                () -> failure.apply(((Resultado.Falla) resul).getMns());
+    };
 
 
 }
